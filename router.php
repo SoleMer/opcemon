@@ -24,8 +24,16 @@ switch ($urlParts[0]) {
     case 'examenes':
         break;
     case 'login':
+        $controller = new UserController();
+        $controller->showLogin();
+        break;
+    case 'register':
+        $controller = new UserController();
+        $controller->showRegister();
         break;
     case 'logout':
+        $controller = new UserController();
+        $controller->logout();
         break;
     default:
         # code...
