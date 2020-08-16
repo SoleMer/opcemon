@@ -12,9 +12,17 @@ class HomeController {
 
     //Muestra el home
     public function showHome() {
-        $this->view->showHome();
+        $userLogged = AuthHelper::checkLoggedIn();
+        if($userLogged == true){
+            $permitsAdmin = AuthHelper::checkPermits();
+            if(permitsAdmin ==1){
+                $this->view->showHome(true);
+            }
+            $this->view->showHome();
+        }else{ 
+            $this->view->showHome();
+        }
     }
-
 }
 
 ?>

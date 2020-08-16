@@ -15,19 +15,7 @@ class UserController {
 
     //Muestra el formulario de LOGIN
     public function showLogin(){
-
-    }
-
-    //Muestra el formulario de REGISTER
-    public function showRegister(){
-        $this->view->showRegister();
-    }
-
-    // LOGOUT
-    public function logout(){
-        session_start();
-        session_destroy();
-        header("Location: " . 'login');
+        $this->view->showLogin();
     }
 
     //Verifica que el usuario y la contraseña coincidan con las guardadas en la DDBB
@@ -55,10 +43,16 @@ class UserController {
         }
     }
 
+    //Muestra el formulario de REGISTER
+    public function showRegister(){
+        $this->view->showRegister();
+    }
+
     //Recibe datos y agrega nuevo usuario.
     public function addUser(){
         //SI LOS DATOS NO ESTAN VACIOS COMPRUEBA QUE LA REPETICION DE CONTRASENA SEA CORRECTA
-        if(!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['repassword'])){
+        if(!empty($_POST['name']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['DNI']) && !empty($_POST['date']) && !empty($_POST['city']) && !empty($_POST['password']) && !empty($_POST['repassword'])){
+            //Si la repetici[on de contrasena no coicide vuelve a mostrar el formulario de registro con el mensaje de error
             if(($_POST['password']) != ($_POST['repassword'])){
                 $this->view->showRegister("Las contrasenas no coinciden");
             }
@@ -66,7 +60,8 @@ class UserController {
                 //SI LAS CONTRASENAS COINCIDEN SE GUARDAN LOS DATOS EN VARIABLES
                 $name = $_POST['name'];
                 $lastname = $_POST['lastname'];  
-                $username = ['name'+'lastname']; 
+                $arrayUsername = [$name." ".$lastname]; 
+                $username = implode(" ", $arrayUsername);
                 $email = $_POST['email']; 
                 $DNI = $_POST['DNI'];
                 $date = $_POST['date']; 
@@ -74,16 +69,30 @@ class UserController {
                 $pass = $_POST['password'];    
                 $hash = password_hash($pass, PASSWORD_DEFAULT);
             }
+            //AGREGO EL USUARIO A LA DB
+            $this->model->addUser($name,$lastname,$username,$email,$date,$DNI,$city,$hash);
+            //OBTENGO LOS DATOS DEL NUEVO USUARIO
+            $user = $this->model->getUserByEmail($email);
+            //INICIO LA SESION DEL NUEVO USUARIO
+            session_start();
+            $_SESSION['ID_USER'] = $user->id;
+            $_SESSION['USERNAME'] = $user->username;
+            $_SESSION['PERMITS'] = $user->permits;
+            var_dump("agregado");
+            die;
+            //VUELVO AL INICIO
+            //header('Location: ' . "home");
         }
-        //AGREGO EL USUARIO A LA DB
-        $this->model->addUser($name,$lastname,$username,$email,$date,$DNI,$city,$hash);
-        //OBTENGO LOS DATOS DEL NUEVO USUARIO
-        $user = $this->model->getUserByEmail($email);
-        //INICIO LA SESION DEL NUEVO USUARIO
+        else{
+            $this->view->showRegister("Por favor, complete todos los datos.");
+        }
+    }
+
+    // CERRAR SESION
+    public function logout(){
         session_start();
-        $_SESSION['ID_USER'] = $user->id;
-        $_SESSION['USERNAME'] = $user->username;
-        $_SESSION['ADMIN'] = $user->admin;
-        //VUELVO AL LISTADO DE PRODUCTOS
-        header('Location: ' . "home");
-    }  
+        session_destroy();
+        header("Location: " . 'login');
+    }
+}
+?>  

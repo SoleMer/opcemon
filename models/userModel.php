@@ -35,8 +35,8 @@ class userModel {
 
     //Agrega un nuevo usuario
     public function addUser($name,$lastname,$username,$email,$date,$DNI,$city,$pass){
-        $query = $this->db->prepare('INSERT INTO user (name, lastname, username, email, date, DNI, city, commission, password, permits) VALUES (?, ?, ?)');
-        return $query->execute([$name,$lastname,$username,$email,$date,$DNI,$city,null,$pass,0]);
+        $query = $this->db->prepare('INSERT INTO user (name, lastname, username, email, date, DNI, city, commission, password, permits) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        return $query->execute([$name,$lastname,$username,$email,$date,$DNI,$city," ",$pass,0]);
     }
 
     //Obtiene el listado de usuarios

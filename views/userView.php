@@ -2,7 +2,7 @@
 require_once('libs/smarty/Smarty.class.php');
 include_once('helpers/auth.helper.php');
 
-class userView {
+class UserView {
  
    private $smarty;
 
@@ -15,11 +15,10 @@ class userView {
    }
 
    //Construye el html para mostrar el formulario de login
-   public function showLogin($error=null,$userLogged=null,$permits=null){
+   public function showLogin($error=null,$userLogged=null){
       $this->smarty->assign('title','Login');
       $this->smarty->assign('error', $error);
       $this->smarty->assign('userLogged', $userLogged);
-      $this->smarty->assign('permits', $permits);
       $this->smarty->display('templates/login.tpl');
    }
 
@@ -29,5 +28,5 @@ class userView {
       $this->smarty->assign('error', $error);
       $this->smarty->display('templates/register.tpl');
    }
-
+}
 ?>

@@ -1,6 +1,8 @@
 <?php
 
 require_once('controllers/homeController.php');
+require_once('controllers/userController.php');
+require_once('controllers/adminController.php');
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -17,6 +19,10 @@ switch ($urlParts[0]) {
         $controller = new HomeController();
         $controller->showHome();
         break;
+    case 'admin':
+        $controller = new AdminController();
+        $controller->showControl();
+        break;
     case 'material':
         break;
     case 'calendario':
@@ -30,6 +36,10 @@ switch ($urlParts[0]) {
     case 'register':
         $controller = new UserController();
         $controller->showRegister();
+        break;
+    case 'addUser':
+        $controller = new UserController();
+        $controller->addUser();
         break;
     case 'logout':
         $controller = new UserController();
