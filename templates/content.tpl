@@ -1,6 +1,6 @@
 {include 'templates/header.tpl'}
 <div class="container">
-  <div class="col-md-10 offset-md-1">
+  <div class="col-md-10 offset-md-1 principal">
     {if $error}
         <div class="alert alert-danger" role="alert">
             {$error}

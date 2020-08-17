@@ -1,3 +1,17 @@
 .nav-item{
     padding-left: 120px;
 }
+
+.container{
+    margin-top: 30px;
+}
+
+.card{
+    height: 150px;
+    text-align: center;
+}
+
+.card-title{
+    color: white;
+    margin-top: 40px;
+}
