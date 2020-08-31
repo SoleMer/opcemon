@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-12 03:13:52
+/* Smarty version 3.1.34-dev-7, created on 2020-08-29 19:32:22
   from 'C:\xampp\htdocs\opcemon\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f334250afa251_41566853',
+  'unifunc' => 'content_5f4a91263c7c36_08542029',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '200375f81e9f0ca0e4c479363bdb8213e56e79e3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\opcemon\\templates\\header.tpl',
-      1 => 1597173016,
+      1 => 1598722340,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f334250afa251_41566853 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4a91263c7c36_08542029 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +51,7 @@ function content_5f334250afa251_41566853 (Smarty_Internal_Template $_smarty_tpl)
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="home" id="" class="item-href-nav"><img src="img/logo.jpg" class="logo"></a>
+                    <a href="home" id="" class="item-href-nav">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a href="material" class="item-href-nav">MATERIAL</a>

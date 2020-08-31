@@ -15,7 +15,19 @@ class UserController {
 
     //Muestra el formulario de LOGIN
     public function showLogin(){
-        $this->view->showLogin();
+        $userLogged = AuthHelper::checkLoggedIn();
+        if($userLogged == true){
+            $permitAdmin = AuthHelper::checkPermits();
+            if($permitAdmin == 1){
+                $this->view->showLogin("Sesion iniciada",$userLogged,$permitAdmin);
+            }
+            else{
+                $this->view->showLogin("Sesion iniciada",$userLogged);
+            }
+        }
+        else{
+            $this->view->showLogin();
+        }
     }
 
     //Verifica que el usuario y la contraseña coincidan con las guardadas en la DDBB
@@ -33,7 +45,7 @@ class UserController {
             session_start();
             $_SESSION['ID_USER'] = $user->id;
             $_SESSION['USERNAME'] = $user->username;
-            $_SESSION['ADMIN'] = $user->admin;
+            $_SESSION['PERMITS'] = $user->permits;
             //VUELVO AL LISTADO DE PRODUCTOS
             header('Location: ' . "home");
         }
@@ -68,13 +80,13 @@ class UserController {
                 $city = $_POST['city'];  
                 $pass = $_POST['password'];    
                 $hash = password_hash($pass, PASSWORD_DEFAULT);
-            }
+            } //FALTA CONTROLAR QUE NO SE AGREGUEN DOS USUARIOS IGUALES
             //AGREGO EL USUARIO A LA DB
             $this->model->addUser($name,$lastname,$username,$email,$date,$DNI,$city,$hash);
             //OBTENGO LOS DATOS DEL NUEVO USUARIO
             $user = $this->model->getUserByEmail($email);
             //INICIO LA SESION DEL NUEVO USUARIO
-            session_start();
+            //session_start();
             $_SESSION['ID_USER'] = $user->id;
             $_SESSION['USERNAME'] = $user->username;
             $_SESSION['PERMITS'] = $user->permits;
@@ -94,5 +106,39 @@ class UserController {
         session_destroy();
         header("Location: " . 'login');
     }
+
+    //Muestra la lista de usuarios
+    public function showUsers(){
+        $users = $this->model->getUsers();
+        $this->view->showUsers($users);
+    }
+    
+    //otorga o quita permisos de administrador a un usuario recibido por parametro
+    public function userPermit($idUser){
+        $user= $this->model->getUserById($idUser);
+        $admin= $user->permits;
+        if ($admin == 0) {
+            $admin = 1;
+        }
+        else{
+            $admin = 0;
+        }
+        $this->model->changePermitAdmin($user->id, $admin);
+        header("Location: " . BASE_URL. 'users');
+    }
+
+    //Elimina un usuario
+    public function deleteUser($id){
+        $this->model->deleteUser($id);
+        header("Location: ". BASE_URL. 'users');
+    }
+
+    //ASIGNA UNA NUEVA COMISION AL USUARIO
+    public function asignCommission($id){
+        $commission = $_POST['commission'];
+        $this->model->asignCommission($id, $commission);
+        header("Location: ". BASE_URL. 'commissions');
+    }
+
 }
 ?>  

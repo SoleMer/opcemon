@@ -5,9 +5,11 @@
         <h4>Curso Operador Centro de Monitoreo</h4>
         <p>texto</p>
     </div>
-    <div class="col-md-2 offset-md-1">
-    <form action="admin">
-    <button type="submit" class="btn btn-primary">Administrar</button>
-  </form>
-    </div>
+    {if $admin == true}
+        <div class="col-md-2 offset-md-1">
+            <form action="admin">
+                <button type="submit" class="btn btn-primary">Administrar</button>
+            </form>
+        </div>
+    {/if}
 </div>

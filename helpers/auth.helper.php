@@ -12,7 +12,7 @@ class AuthHelper {
         $_SESSION['EMAIL'] = $user[0]->email;
         $_SESSION['COMMISSION'] = $user[0]->commission;
         $_SESSION['PERMITS'] = $user[0]->permits;
-        header('location:' . URLBASE . 'home');
+        header('location:' . BASE_URL . 'home');
     }
 
     public static function checkLoggedIn(){
@@ -56,6 +56,15 @@ class AuthHelper {
             session_start();
         if(isset($_SESSION['USERNAME']))
             return $_SESSION['USERNAME'];
+        else
+            return null;
+    }
+    
+    public function getLoggedId() {
+        if (session_status() != PHP_SESSION_ACTIVE)
+            session_start();
+        if(isset($_SESSION['ID_USER']))
+            return $_SESSION['ID_USER'];
         else
             return null;
     }

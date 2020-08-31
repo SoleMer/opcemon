@@ -6,7 +6,7 @@ class userModel {
 
     public function __construct() {
     
-    $this->db = new PDO('mysql:host=localhost;dbname=soy_yo;charset=utf8', 'root', '');
+    $this->db = new PDO('mysql:host=localhost;dbname=opcemon;charset=utf8', 'root', '');
         $host = 'localhost';
         $userName = 'root';
         $password = '';
@@ -27,11 +27,11 @@ class userModel {
         return $query->fetch(PDO::FETCH_OBJ);      
     }
 
-    /*public function getUserById($idUser) {
-        $query = $this->db->prepare('SELECT * FROM `user` WHERE id_user = ?');
+    public function getUserById($idUser) {
+        $query = $this->db->prepare('SELECT * FROM `user` WHERE id = ?');
         $query->execute(array(($idUser)));
         return $query->fetch(PDO::FETCH_OBJ);      
-    }*/
+    }
 
     //Agrega un nuevo usuario
     public function addUser($name,$lastname,$username,$email,$date,$DNI,$city,$pass){
@@ -46,16 +46,22 @@ class userModel {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    //Cambia permisos de administrador
-    public function changePermitAdmin($email, $permits){
-        $query = $this->db->prepare('UPDATE `user` SET `admin`= ?  WHERE `email` = ?');
-        return $query->execute([$permits,$email]);
-    }
-
     //Elimina un usuario 
     public function deleteUser($id){
         $query = $this->db->prepare('DELETE FROM `user` WHERE `id_user`= ?');
         return $query->execute([$id]);
+    }
+
+    //Cambia permisos de administrador
+    public function changePermitAdmin($user, $admin){
+        $query = $this->db->prepare('UPDATE `user` SET `permits`= ?  WHERE `id` = ?');
+        return $query->execute([$admin,$user]);
+    }
+
+    //Asigna una comision a un usuario predeterminado
+    public function asignCommission($user, $commission){
+        $query = $this->db->prepare('UPDATE `user` SET `commission`= ?  WHERE `id` = ?');
+        return $query->execute([$commission,$user]);
     }
 }
 ?>

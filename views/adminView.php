@@ -21,5 +21,6 @@ class AdminView {
         $this->smarty->assign('commissions',$commissions);
         $this->smarty->display('templates/admin.tpl');
     }
+    
 }
 ?>

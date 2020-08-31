@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="home" id="" class="item-href-nav"><img src="img/logo.jpg" class="logo"></a>
+                    <a href="home" id="" class="item-href-nav">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a href="material" class="item-href-nav">MATERIAL</a>

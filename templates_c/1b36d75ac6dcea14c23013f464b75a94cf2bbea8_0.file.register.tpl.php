@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-13 03:06:54
+/* Smarty version 3.1.34-dev-7, created on 2020-08-28 23:34:16
   from 'C:\xampp\htdocs\opcemon\templates\register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f34922e384531_98717808',
+  'unifunc' => 'content_5f4978587f9979_84354554',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1b36d75ac6dcea14c23013f464b75a94cf2bbea8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\opcemon\\templates\\register.tpl',
-      1 => 1597280807,
+      1 => 1598650111,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/header.tpl' => 1,
   ),
 ),false)) {
-function content_5f34922e384531_98717808 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4978587f9979_84354554 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">

@@ -15,12 +15,14 @@ class HomeController {
         $userLogged = AuthHelper::checkLoggedIn();
         if($userLogged == true){
             $permitsAdmin = AuthHelper::checkPermits();
-            if(permitsAdmin ==1){
+            if($permitsAdmin ==1){
                 $this->view->showHome(true);
             }
-            $this->view->showHome();
+            else{
+            $this->view->showHome(false);
+            }
         }else{ 
-            $this->view->showHome();
+            $this->view->showHome(false);
         }
     }
 }

@@ -6,7 +6,7 @@ class CommissionModel {
 
     public function __construct() {
     
-    $this->db = new PDO('mysql:host=localhost;dbname=soy_yo;charset=utf8', 'root', '');
+    $this->db = new PDO('mysql:host=localhost;dbname=opcemon;charset=utf8', 'root', '');
         $host = 'localhost';
         $userName = 'root';
         $password = '';
@@ -25,6 +25,12 @@ class CommissionModel {
         $query = $this->db->prepare('SELECT * FROM commission');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    //Agrega una nueva comision a la DB
+    public function addCommission($city,$number){
+        $query = $this->db->prepare('INSERT INTO commission (city, number) VALUES (?, ?)');
+        return $query->execute([$city,$number]);
     }
 
 }
