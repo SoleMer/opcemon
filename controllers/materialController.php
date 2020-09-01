@@ -5,6 +5,7 @@ include_once('models/materialModel.php');
 include_once('models/accessModel.php');
 include_once('models/userModel.php');
 include_once('models/commissionModel.php');
+include_once('models/questionModel.php');
 
 class MaterialController {
 
@@ -13,6 +14,7 @@ class MaterialController {
     private $accessModel;
     private $userModel;
     private $commissionModel;
+    private $questionModel;
 
     public function __construct() {
         $this->view = new MaterialView();
@@ -20,6 +22,7 @@ class MaterialController {
         $this->accessModel = new AccessModel();
         $this->userModel = new UserModel();
         $this->commissionModel = new CommissionModel();
+        $this->questionModel = new QuestionModel();
     }
 
     //Muestra el listado de material de estudio disponible
@@ -81,11 +84,12 @@ class MaterialController {
         $userLogged = AuthHelper::checkLoggedIn();
         if ($userLogged == true) {  //Si el usuario esta logueado
             $archive= $this->model->getArchive($id);
+            $questions = $this->questionModel->getQuestions($id);
             $permitAdmin = AuthHelper::checkPermits(); //Me fijo si el usuario es administrador
             if ($permitAdmin == 1) { //Si es administrador le muestro todo el material
                 $access = $this->accessModel->getAccess(); //Obtengo todos los accesos
                 $commissions = $this->commissionModel->getCommissions();  //obtengo todas las comisiones
-                $this->view->showArchive(null,$archive,$permitAdmin,$access,$commissions);
+                $this->view->showArchive(null,$archive,$questions,$permitAdmin,$access,$commissions);
                 die;
             }else{ //Si no es administrador necesito saber a que material puede acceder
                 $userId= AuthHelper::getLoggedId(); 
@@ -94,7 +98,7 @@ class MaterialController {
                 $commissionsAcepted = $this->accessModel->getAccessForMaterial($id); //Obtengo las comisiones que pueden acceder al archivo
                 foreach ($commissionsAcepted as $com) {
                     if ($com->commission == $commission) {
-                        $this->view->showArchive(null,$archive);
+                        $this->view->showArchive(null,$archive,$questions);
                         die;
                     }
                 }

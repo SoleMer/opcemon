@@ -66,6 +66,15 @@ case 'home':
     case 'giveAccess':
         $controller = new MaterialController();
         $controller->giveAccess($urlParts[1],$urlParts[2]);
+    case 'newQuestion':
+        $controller = new QuestionController();
+        $controller->addQuestion($urlParts[1],$urlParts[2]);
+    case 'question':
+        $controller = new QuestionController();
+        $controller->showQuestion($urlParts[1]);
+    case 'nweReply':
+        $controller = new ReplyController();
+        $controller->addReply($urlParts[1],$urlParts[2]);
     case 'calendario':
         break;
     case 'examenes':

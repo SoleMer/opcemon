@@ -9,8 +9,8 @@
             </div>
         </div>
     {/if}
-    {if $archive}
-        <div class="row">
+    <div class="row">
+        {if $archive}
             <div class="col-md-8">
                 <h1>{$archive->title}</h1>
                 {if $archive->archive != null}
@@ -20,8 +20,7 @@
                     <p>{$archive->link}</p>
                 {/if}
             </div>
-        </div>
-    {/if}
+        {/if}
         {if $admin == 1}
             <div class="col-md-4">
                 <table class="table table-striped table-dark">
@@ -53,5 +52,8 @@
                 </table>
             </div>
         {/if}
+    </div>
+    <div name="foro"> 
+        {include 'templates/foro.tpl'}
     </div>
 </div>

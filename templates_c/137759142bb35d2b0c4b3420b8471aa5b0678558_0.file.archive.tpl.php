@@ -1,27 +1,28 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-31 21:52:34
+/* Smarty version 3.1.34-dev-7, created on 2020-09-01 02:23:27
   from 'C:\xampp\htdocs\opcemon\templates\archive.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f4d5502707f51_12377892',
+  'unifunc' => 'content_5f4d947f094ce3_74586331',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '137759142bb35d2b0c4b3420b8471aa5b0678558' => 
     array (
       0 => 'C:\\xampp\\htdocs\\opcemon\\templates\\archive.tpl',
-      1 => 1598903525,
+      1 => 1598914118,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:templates/header.tpl' => 1,
+    'file:templates/foro.tpl' => 1,
   ),
 ),false)) {
-function content_5f4d5502707f51_12377892 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4d947f094ce3_74586331 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
@@ -35,8 +36,8 @@ $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cach
             </div>
         </div>
     <?php }?>
-    <?php if ($_smarty_tpl->tpl_vars['archive']->value) {?>
-        <div class="row">
+    <div class="row">
+        <?php if ($_smarty_tpl->tpl_vars['archive']->value) {?>
             <div class="col-md-8">
                 <h1><?php echo $_smarty_tpl->tpl_vars['archive']->value->title;?>
 </h1>
@@ -49,8 +50,7 @@ $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cach
 </p>
                 <?php }?>
             </div>
-        </div>
-    <?php }?>
+        <?php }?>
         <?php if ($_smarty_tpl->tpl_vars['admin']->value == 1) {?>
             <div class="col-md-4">
                 <table class="table table-striped table-dark">
@@ -104,6 +104,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </table>
             </div>
         <?php }?>
+    </div>
+    <div name="foro"> 
+        <?php $_smarty_tpl->_subTemplateRender('file:templates/foro.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
     </div>
 </div><?php }
 }

@@ -1,11 +1,11 @@
 #OPCEMON
 ##Plataforma para Curso de Operador de Centro de Monitoreo.
 
-El nombre de usuario se genera automáticamente con el nombre y el apellido del usuario.
-La comisión se compone por el nombre de la ciudad más un número.
-Cuando un usuario se registra no tiene comisión asignada, se le asignará una vez que pertenezca a un curso.
-Cada material que se suba lo podrán ver los usuarios que pertenezcan a las comisiones seleccionadas.
-Cada artículo de material de estudio tendrá un formato de foro, en el que se podrá hacer consultas relacionadas.
+    El nombre de usuario se genera automáticamente con el nombre y el apellido del usuario. 
+    La comisión se compone por el nombre de la ciudad más un número.
+    Cuando un usuario se registra no tiene comisión asignada, se le asignará una vez que pertenezca a un curso.
+    Cada material que se suba lo podrán ver los usuarios que pertenezcan a las comisiones seleccionadas.
+    Cada artículo de material de estudio tendrá un formato de foro, en el que se podrá hacer consultas relacionadas.
 
 
 ##Panel de adminisrtación:
@@ -19,7 +19,7 @@ Cada artículo de material de estudio tendrá un formato de foro, en el que se p
         . Listado de usuarios y ciudad de cada uno.
         . Select en cada usuario para asignar comisión.
     ### Material:
-        . Listado de comisiones para seleccionar varias.
+       . Listado de comisiones para seleccionar varias.
 
 ##Como visitante que quiere realizar el curso:
 
@@ -47,3 +47,10 @@ Cada artículo de material de estudio tendrá un formato de foro, en el que se p
     - Puedo seleccionar para qué comisiones está disponible cada material de estudio.
     - Puedo hacer comentarios en los foros de consulta.
     - Puedo eliminar comentarios.
+
+
+TODO
+    Carga de archivos pdf/word/docx
+    Quitar acceso a material a una comision
+    Perfil del usuario
+    Olvidaste tu contrasena
