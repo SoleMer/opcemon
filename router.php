@@ -5,6 +5,9 @@ require_once('controllers/userController.php');
 require_once('controllers/adminController.php');
 require_once('controllers/commissionController.php');
 require_once('controllers/materialController.php');
+require_once('controllers/questionController.php');
+require_once('controllers/replyController.php');
+
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -72,7 +75,7 @@ case 'home':
     case 'question':
         $controller = new QuestionController();
         $controller->showQuestion($urlParts[1]);
-    case 'nweReply':
+    case 'newReply':
         $controller = new ReplyController();
         $controller->addReply($urlParts[1],$urlParts[2]);
     case 'calendario':

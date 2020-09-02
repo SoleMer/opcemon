@@ -36,5 +36,7 @@ class QuestionModel {
         $query->execute(array(($id)));
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
+    
 }
 ?>

@@ -1,40 +1,35 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-31 03:27:13
+/* Smarty version 3.1.34-dev-7, created on 2020-09-01 18:10:59
   from 'C:\xampp\htdocs\opcemon\templates\material.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f4c51f11dc6c9_99662735',
+  'unifunc' => 'content_5f4e729375dc07_09683941',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2f581178e26c69cbcc783733daedbe46ad2d2f67' => 
     array (
       0 => 'C:\\xampp\\htdocs\\opcemon\\templates\\material.tpl',
-      1 => 1598837224,
+      1 => 1598976055,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:templates/header.tpl' => 1,
+    'file:templates/error.tpl' => 1,
   ),
 ),false)) {
-function content_5f4c51f11dc6c9_99662735 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4e729375dc07_09683941 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <?php if ($_smarty_tpl->tpl_vars['error']->value) {?>
-                <div class="alert alert-primary" role="alert">
-                    <?php echo $_smarty_tpl->tpl_vars['error']->value;?>
-
-                </div>
-            <?php }?>
-        </div>
-    </div>
+    <?php if ($_smarty_tpl->tpl_vars['error']->value) {?>    
+        <?php $_smarty_tpl->_subTemplateRender('file:templates/error.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+    <?php }?>
     <div class="row">
         <div class="col-md-8">
             <?php if ($_smarty_tpl->tpl_vars['material']->value) {?>

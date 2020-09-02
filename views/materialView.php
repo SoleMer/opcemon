@@ -24,12 +24,12 @@ class MaterialView {
         $this->smarty->display('templates/material.tpl');
     }
 
-    public function showArchive($error=null,$archive=null,$questions=null,$admin=null,$access=null,$commissions=null){
+    public function showArchive($archive=null,$questions=null,$user=null,$admin=null,$access=null,$commissions=null){
         $this->smarty->assign('title','Material');
-        $this->smarty->assign('error', $error);
         $this->smarty->assign('archive', $archive);
         $this->smarty->assign('questions', $questions);
         $this->smarty->assign('admin', $admin);
+        $this->smarty->assign('user', $user);
         $this->smarty->assign('access', $access);
         $this->smarty->assign('commissions', $commissions);
         $this->smarty->display('templates/archive.tpl');

@@ -2,7 +2,7 @@
 require_once('libs/smarty/Smarty.class.php');
 include_once('helpers/auth.helper.php');
 
-class AdminView {
+class QuestionView {
 
     private $smarty;
 
@@ -15,10 +15,12 @@ class AdminView {
     }
 
     //Construye el html para mostrar la página que contiene una pregunta y sus respuestas si las hay
-    public function showControl($question,$replys=null){
+    public function showQuestion($question=null,$replys=null,$users=null,$user_id=null){
         $this->smarty->assign('title','Consulta');
         $this->smarty->assign('question', $question);
         $this->smarty->assign('replys',$replys);
+        $this->smarty->assign('users',$users);
+        $this->smarty->assign('user_id',$user_id);
         $this->smarty->display('templates/question.tpl');
     }
     

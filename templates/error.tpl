@@ -1,10 +1,7 @@
-{include 'templates/header.tpl'}
-
-<div class="container">
-<div class="col-md-4 offset-md-4 fondo-blanco">
-    <h2>Error</h2>
-    <h5>{$message}</h5>
-    <div class="text-center"><a class="" href="products">Back</a></div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-primary" role="alert">
+            {$error}
+        </div>
+    </div>
 </div>
-
-{include 'templates/footer.tpl'}

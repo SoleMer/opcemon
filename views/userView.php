@@ -30,9 +30,10 @@ class UserView {
    }
 
    //Muestra el listado de usuarios
-   public function showUsers($users){
+   public function showUsers($users=null,$error=null){
       $this->smarty->assign('title','Users');
       $this->smarty->assign('users', $users);
+      $this->smarty->assign('error', $error);
       $this->smarty->display('templates/users.tpl');
    }
 }

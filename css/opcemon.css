@@ -1,21 +1,24 @@
-.nav-item{
+.nav-item {
     padding-left: 120px;
 }
 
-.container{
+.container {
     margin-top: 30px;
 }
 
-.card{
+.big-card {
     height: 150px;
     text-align: center;
 }
 
-.card-title{
-    color: white;
-    margin-top: 40px;
+.little-card {
+    height: 50px;
 }
 
-li{
+.card-title {
+    color: white;
+}
+
+li {
     text-decoration: none;
 }

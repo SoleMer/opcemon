@@ -1,40 +1,35 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-01 02:23:27
+/* Smarty version 3.1.34-dev-7, created on 2020-09-01 18:11:41
   from 'C:\xampp\htdocs\opcemon\templates\archive.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f4d947f094ce3_74586331',
+  'unifunc' => 'content_5f4e72bd7a5cd7_86167295',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '137759142bb35d2b0c4b3420b8471aa5b0678558' => 
     array (
       0 => 'C:\\xampp\\htdocs\\opcemon\\templates\\archive.tpl',
-      1 => 1598914118,
+      1 => 1598976604,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:templates/header.tpl' => 1,
+    'file:templates/error.tpl' => 1,
     'file:templates/foro.tpl' => 1,
   ),
 ),false)) {
-function content_5f4d947f094ce3_74586331 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4e72bd7a5cd7_86167295 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
     <?php if ($_smarty_tpl->tpl_vars['error']->value) {?>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-primary" role="alert">
-                    <?php echo $_smarty_tpl->tpl_vars['error']->value;?>
-
-                </div>
-            </div>
-        </div>
+        <?php $_smarty_tpl->_subTemplateRender('file:templates/error.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
     <?php }?>
     <div class="row">
         <?php if ($_smarty_tpl->tpl_vars['archive']->value) {?>

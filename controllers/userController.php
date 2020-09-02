@@ -15,9 +15,9 @@ class UserController {
 
     //Muestra el formulario de LOGIN
     public function showLogin(){
-        $userLogged = AuthHelper::checkLoggedIn();
-        if($userLogged == true){
-            $permitAdmin = AuthHelper::checkPermits();
+        $userLogged = AuthHelper::checkLoggedIn(); //Pregunto si el usuario está logueado
+        if($userLogged == true){   //Si está logueado
+            $permitAdmin = AuthHelper::checkPermits();  //Pregunto si es administrador
             if($permitAdmin == 1){
                 $this->view->showLogin("Sesion iniciada",$userLogged,$permitAdmin);
             }
@@ -55,7 +55,7 @@ class UserController {
         }
     }
 
-    //Muestra el formulario de REGISTER
+    //Muestra el formulario de REGISTRO
     public function showRegister(){
         $this->view->showRegister();
     }
@@ -109,35 +109,60 @@ class UserController {
 
     //Muestra la lista de usuarios
     public function showUsers(){
-        $users = $this->model->getUsers();
-        $this->view->showUsers($users);
+        $permitAdmin = AuthHelper::checkPermits();
+        if ($permitAdmin == 1) {
+            $users = $this->model->getUsers();
+            $this->view->showUsers($users);
+            die;
+        }
+        else {
+            $this->view->showUsers(null,"Sólo los administradores pueden acceder a la administración.");
+        }
     }
     
     //otorga o quita permisos de administrador a un usuario recibido por parametro
     public function userPermit($idUser){
-        $user= $this->model->getUserById($idUser);
-        $admin= $user->permits;
-        if ($admin == 0) {
-            $admin = 1;
+        $permitAdmin = AuthHelper::checkPermits();
+        if ($permitAdmin == 1) {
+            $user= $this->model->getUserById($idUser);
+            $admin= $user->permits;
+            if ($admin == 0) {
+                $admin = 1;
+            }
+            else{
+                $admin = 0;
+            }
+            $this->model->changePermitAdmin($user->id, $admin);
+            header("Location: " . BASE_URL. 'users');
         }
         else{
-            $admin = 0;
+            $this->view->showUsers(null,"Sólo los administradores pueden acceder a la administración.");
         }
-        $this->model->changePermitAdmin($user->id, $admin);
-        header("Location: " . BASE_URL. 'users');
     }
 
     //Elimina un usuario
     public function deleteUser($id){
-        $this->model->deleteUser($id);
-        header("Location: ". BASE_URL. 'users');
+        $permitAdmin = AuthHelper::checkPermits();
+        if ($permitAdmin == 1) {
+            $this->model->deleteUser($id);
+            header("Location: ". BASE_URL. 'users');
+        }
+        else{
+            $this->view->showUsers(null,"Sólo los administradores pueden acceder a la administración.");
+        }
     }
 
     //ASIGNA UNA NUEVA COMISION AL USUARIO
     public function asignCommission($id){
-        $commission = $_POST['commission'];
-        $this->model->asignCommission($id, $commission);
-        header("Location: ". BASE_URL. 'commissions');
+        $permitAdmin = AuthHelper::checkPermits();
+        if ($permitAdmin == 1) {
+            $commission = $_POST['commission'];
+            $this->model->asignCommission($id, $commission);
+            header("Location: ". BASE_URL. 'commissions');
+        }
+        else{
+            $this->view->showUsers(null,"Sólo los administradores pueden acceder a la administración.");
+        }
     }
 
 }

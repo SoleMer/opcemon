@@ -12,16 +12,11 @@ class HomeController {
 
     //Muestra el home
     public function showHome() {
-        $userLogged = AuthHelper::checkLoggedIn();
-        if($userLogged == true){
-            $permitsAdmin = AuthHelper::checkPermits();
-            if($permitsAdmin ==1){
-                $this->view->showHome(true);
-            }
-            else{
-            $this->view->showHome(false);
-            }
-        }else{ 
+        $permitsAdmin = AuthHelper::checkPermits(); //Pregunto si el usuario esadministrador
+        if($permitsAdmin ==1){  //Sólo si es administrador va a mostrar el botón para acceder a la administración
+            $this->view->showHome(true);
+        }
+        else{ 
             $this->view->showHome(false);
         }
     }

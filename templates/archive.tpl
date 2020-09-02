@@ -1,14 +1,5 @@
 {include 'templates/header.tpl'}
 <div class="container">
-    {if $error}
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-primary" role="alert">
-                    {$error}
-                </div>
-            </div>
-        </div>
-    {/if}
     <div class="row">
         {if $archive}
             <div class="col-md-8">

@@ -1,14 +1,8 @@
 {include 'templates/header.tpl'}
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            {if $error}
-                <div class="alert alert-primary" role="alert">
-                    {$error}
-                </div>
-            {/if}
-        </div>
-    </div>
+    {if $error}    
+        {include 'templates/error.tpl'}
+    {/if}
     <div class="row">
         <div class="col-md-8">
             {if $material}

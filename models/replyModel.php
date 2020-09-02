@@ -27,7 +27,7 @@ class ReplyModel {
     }
 
     public function addReply($message,$question,$user){
-        $query = $this->db->prepare('INSERT INTO reply (message, id_question, id_user) VALUES (?, ?, ?)');
+        $query = $this->db->prepare('INSERT INTO reply (messagge, id_question, id_user) VALUES (?, ?, ?)');
         return $query->execute([$message,$question,$user]);
     }
 }

@@ -1,4 +1,4 @@
-#OPCEMON
+#OP.CE.MON
 ##Plataforma para Curso de Operador de Centro de Monitoreo.
 
     El nombre de usuario se genera automáticamente con el nombre y el apellido del usuario. 
