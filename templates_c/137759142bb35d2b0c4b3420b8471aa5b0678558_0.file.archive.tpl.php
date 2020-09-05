@@ -1,48 +1,44 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-01 18:11:41
+/* Smarty version 3.1.34-dev-7, created on 2020-09-04 03:47:12
   from 'C:\xampp\htdocs\opcemon\templates\archive.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f4e72bd7a5cd7_86167295',
+  'unifunc' => 'content_5f519ca0f35157_61049239',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '137759142bb35d2b0c4b3420b8471aa5b0678558' => 
     array (
       0 => 'C:\\xampp\\htdocs\\opcemon\\templates\\archive.tpl',
-      1 => 1598976604,
+      1 => 1599184022,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:templates/header.tpl' => 1,
-    'file:templates/error.tpl' => 1,
     'file:templates/foro.tpl' => 1,
   ),
 ),false)) {
-function content_5f4e72bd7a5cd7_86167295 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f519ca0f35157_61049239 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
-    <?php if ($_smarty_tpl->tpl_vars['error']->value) {?>
-        <?php $_smarty_tpl->_subTemplateRender('file:templates/error.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-    <?php }?>
     <div class="row">
         <?php if ($_smarty_tpl->tpl_vars['archive']->value) {?>
             <div class="col-md-8">
                 <h1><?php echo $_smarty_tpl->tpl_vars['archive']->value->title;?>
 </h1>
                 <?php if ($_smarty_tpl->tpl_vars['archive']->value->archive != null) {?>
-                    <?php echo $_smarty_tpl->tpl_vars['material']->value->archive;?>
-
+                    <embed src="<?php echo $_smarty_tpl->tpl_vars['archive']->value->archive;?>
+" type="application/pdf" width="800" height="600"></embed>
                 <?php }?>
                 <?php if ($_smarty_tpl->tpl_vars['archive']->value->link != null) {?>
-                    <p><?php echo $_smarty_tpl->tpl_vars['archive']->value->link;?>
-</p>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['archive']->value->link;?>
+"><?php echo $_smarty_tpl->tpl_vars['archive']->value->link;?>
+</a>
                 <?php }?>
             </div>
         <?php }?>

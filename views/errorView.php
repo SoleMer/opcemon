@@ -15,7 +15,7 @@ class ErrorView {
     }
 
     //Construye el html para mostrar la página "home"
-    public function showHome($error){
+    public function error($error){
         $this->smarty->assign('title','Error');
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/error.tpl');

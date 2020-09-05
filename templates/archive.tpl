@@ -5,10 +5,10 @@
             <div class="col-md-8">
                 <h1>{$archive->title}</h1>
                 {if $archive->archive != null}
-                    {$material->archive}
+                    <embed src="{$archive->archive}" type="application/pdf" width="800" height="600"></embed>
                 {/if}
                 {if $archive->link != null}
-                    <p>{$archive->link}</p>
+                    <a href="{$archive->link}">{$archive->link}</a>
                 {/if}
             </div>
         {/if}

@@ -17,11 +17,11 @@
         </div>
         {if $admin == true}
             <div class="col-md-4">
-                <form action="addMaterial" method="POST">
+                <form action="addMaterial" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Titulo</label>
                         <input name='title' type="text" class="form-control" id="title">
-                        <input type="file" name="input_name" id="archive">
+                        <input type="file" name="document">
                         <label for="link">Link</label>
                         <input name='link' type="text" class="form-control" id="link">
                         <button type="submit" class="btn btn-primary">Guardar</button>

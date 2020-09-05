@@ -44,7 +44,7 @@ class CommissionController {
             header('Location: ' . "commissions");
         }
         else{
-            $this->error->error("Sólo los administradores pueden administrar las comisiones.")
+            $this->error->error("Sólo los administradores pueden administrar las comisiones.");
         }
     }
 }

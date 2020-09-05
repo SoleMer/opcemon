@@ -66,14 +66,14 @@ class MaterialController {
             //Si hay titulo lo guarda en una variable y sigue la funcion
             $title = $_POST['title'];
             //pregunta si hay un archivo subido
-            if(isset($_FILES['input_name']) && ($_FILES['input_name']['type'] == "archive/pdf" || $_FILES['input_name']['type'] == "archive/word" || $_FILES['input_name']['type'] == "archive/docx")) {
+            if(isset($_FILES['document']) && ($_FILES['document']['type'] == 'application/pdf' || $_FILES['input_name']['type'] == 'application/word' || $_FILES['input_name']['type'] == 'application/docx')) {
                 //Pregunta si hay un link
                 if (!empty($_POST['link'])) {
                     $link = $_POST['link'];
                     //Si hay archivo y link guarda el material en la DB con archivo y link
-                    $success = $this->model->save($title, $_FILES['input_name']['tmp_name'], $link);
+                    $success = $this->model->save($title, $_FILES['document']['tmp_name'], $link);
                 } else { //Si hay archivo pero no hay link guarda en la DB sin link
-                    $success = $this->model->save($title, $_FILES['input_name']['tmp_name']);
+                    $success = $this->model->save($title, $_FILES['document']['tmp_ name']);
                 }
             }else{ //si no hay archivo pregunta si hay link
                 if (!empty($_POST['link'])) {
@@ -81,13 +81,13 @@ class MaterialController {
                     //Si hay link guarda en la DB sin archivo y con link
                     $success = $this->model->save($title, null, $link);
                 }else{ //Si no hay archivo ni link guarda en la DB el material vacio para ser editado despues
-                $success = $this->model->save($title);
-            }
+                    $success = $this->model->save($title);
+                }
             }
             header('Location: ' . "material");
         }
         else{
-            $this->error->error('Solo los administradores pueden agregar material de estudio.')
+            $this->error->error('Solo los administradores pueden agregar material de estudio.');
         }
     }
 
