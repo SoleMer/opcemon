@@ -63,5 +63,11 @@ class userModel {
         $query = $this->db->prepare('UPDATE `user` SET `commission`= ?  WHERE `id` = ?');
         return $query->execute([$commission,$user]);
     }
+
+    //Edita informacion de un usuario en la DB
+    public function editUser($id, $date, $DNI, $email, $city){
+        $query = $this->db->prepare('UPDATE `user` SET `date`= ? , `DNI`= ?, `email`= ?, `city`=?  WHERE `id` = ?');
+        return $query->execute([$date,$DNI,$email,$city,$id]);
+    }
 }
 ?>

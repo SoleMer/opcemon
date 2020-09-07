@@ -27,6 +27,12 @@ class CommissionModel {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getCommission($id){
+        $query = $this->db->prepare('SELECT * FROM commission WHERE id = ?');
+        $query->execute(array(($id)));
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
     //Agrega una nueva comision a la DB
     public function addCommission($city,$number){
         $query = $this->db->prepare('INSERT INTO commission (city, number) VALUES (?, ?)');

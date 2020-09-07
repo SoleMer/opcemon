@@ -2,15 +2,21 @@
 
 include_once('models/userModel.php');
 include_once('views/userView.php');
+include_once('views/errorView.php');
+include_once('models/commissionModel.php');
 
 class UserController {
 
     private $model;  
     private $view;
+    private $error;
+    private $commModel;
 
     public function __construct() {
         $this->model = new UserModel();
         $this->view = new UserView();
+        $this->error = new ErrorView();
+        $this->commModel = new CommissionModel();
     }
 
     //Muestra el formulario de LOGIN
@@ -162,6 +168,69 @@ class UserController {
         }
         else{
             $this->view->showUsers(null,"Sólo los administradores pueden acceder a la administración.");
+        }
+    }
+
+    //Muestra el perfil del usuario
+    public function showPerfil(){
+        $userLogged = AuthHelper::checkLoggedIn(); //Pregunto si el usuario está logueado
+        if($userLogged == true){   //Si está logueado
+            $id = AuthHelper::getLoggedId();
+            $user = $this->model->getUserById($id);
+            $commission = $this->commModel->getCommission($user->commission);
+            $this->view->showPerfil($user,$commission);
+        }
+        else{
+            $this->error->error("Debe iniciar sesion para acceder a su perfil.");
+        }
+    }
+
+    //Muestra el formulario de edicion d3l perfil actual
+    public function editPerfil(){
+        $userLogged = AuthHelper::checkLoggedIn(); //Pregunto si el usuario está logueado
+        if($userLogged == true){   //Si está logueado
+            $id = AuthHelper::getLoggedId();
+            $user = $this->model->getUserById($id);
+            $this->view->editPerfil($user);
+        }
+        else{
+            $this->error->error("Debe iniciar sesion para editar su perfil.");
+        }
+    }
+
+    //Edito el usuario en la DB
+    public function editUser($id){
+        $user= $this->model->getUserById($id);
+        if (empty($_POST['date'])){
+            $date= $user->date;
+        }else{
+            $date = $_POST['date'];
+        }
+        if (empty($_POST['DNI'])){
+            $DNI= $user->DNI;
+        }else{
+            $DNI = $_POST['DNI'];
+        }
+        if (empty($_POST['email'])) {
+            $email= $user->email;
+        }else{
+            $email = $_POST['email'];
+        }
+        if (empty($_POST['city'])) {
+            $city= $user->city;
+        }else{
+            $city = $_POST['city'];
+        }
+        /*if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" 
+            || $_FILES['input_name']['type'] == "image/png") {
+            $success = $this->model->editUser($id, $date, $DNI, $email, $city, $_FILES['input_name']['tmp_name']);
+        } else {*/          //AGREGAR FOTO DE PERFIL??
+            $success = $this->model->editUser($id, $date, $DNI, $email, $city);
+        //}
+        if($success)
+            header("Location: ". BASE_URL. 'perfil');
+        else{
+            $this->error->error("No se pudo editar el perfil. Comunicate con un administrador.");
         }
     }
 

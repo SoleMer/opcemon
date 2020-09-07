@@ -36,5 +36,18 @@ class UserView {
       $this->smarty->assign('error', $error);
       $this->smarty->display('templates/users.tpl');
    }
+
+   public function showPerfil($user,$commission){
+      $this->smarty->assign('title','Users');
+      $this->smarty->assign('user', $user);
+      $this->smarty->assign('commission', $commission);
+      $this->smarty->display('templates/perfil.tpl');
+   }
+
+   public function editPerfil($user){
+      $this->smarty->assign('title','Users');
+      $this->smarty->assign('user', $user);
+      $this->smarty->display('templates/editPerfil.tpl');
+   }
 }
 ?>

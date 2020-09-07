@@ -49,8 +49,10 @@
     - Puedo eliminar comentarios.
 
 
-TODO
-    Carga de archivos pdf/word/docx
-    Quitar acceso a material a una comision
-    Perfil del usuario
-    Olvidaste tu contrasena
+##TODO:
+
+    - Mostrar archivo pdf 
+    - CORREGIR Quitar acceso a material a una comision
+    - Foto para el usuario????
+    - Olvidaste tu contrasena
+    - Mejorar frontend

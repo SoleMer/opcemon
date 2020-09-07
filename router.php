@@ -102,6 +102,17 @@ case 'home':
         $controller = new UserController();
         $controller->logout();
         break;
+    case 'perfil':
+        $controller = new UserController();
+        $controller->showPerfil();
+    break;
+    case 'editPerfil':
+        $controller = new UserController();
+        $controller->editPerfil();
+    break;
+    case 'editUser':
+        $controller = new UserController();
+        $controller->edituser($urlParts[1]);
     default:
         # code...
         break;
