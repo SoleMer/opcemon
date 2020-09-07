@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <h1>{$archive->title}</h1>
                 {if $archive->archive != null}
-                    <embed src="{$archive->archive}" type="application/pdf" width="800" height="600"></embed>
+                    <embed src="{$archive->archive}" type="application/pdf" width="800" height="600">
                 {/if}
                 {if $archive->link != null}
                     <a href="{$archive->link}">{$archive->link}</a>

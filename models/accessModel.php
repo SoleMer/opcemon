@@ -39,14 +39,14 @@ class AccessModel {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function removeAccess($id){
-        $query = $this->db->prepare('DELETE FROM `access` WHERE `id`= ?');
-        return $query->execute([$id]);
+    public function removeAccess($commission,$material){
+        $query = $this->db->prepare('DELETE FROM `access` WHERE `commission`= ? AND `material`= ?');
+        return $query->execute([$$commission,$material]);
     }
 
     public function addAccess($commission,$material){
         $query = $this->db->prepare('INSERT INTO access (commission, material) VALUES (?, ?)');
-        return $query->execute([$commission,$material]);
+        return $query->execute([$commission,$material]); 
     }
 
     /* SIN USO

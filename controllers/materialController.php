@@ -124,16 +124,17 @@ class MaterialController {
     //Quita el acceso a un material a una comisión seleccionada CORREGIR
     public function removeAccess($commission,$material){
         $permitAdmin = AuthHelper::checkPermits(); //Pregunta si el usuario es administrador
-        if ($permitAdmin == 1) {
-            $access= $this->accessModel->getAccessForMaterial($archive);
-            foreach ($access as $a) {
-                if ($a->commission == $commission->id) {
+        if ($permitAdmin == 1) { //Si es administrado entra
+            /*$access= $this->accessModel->getAccessForMaterial($archive); //Obtengo la lista de accesos al material especificado
+            foreach ($access as $a) { //En cada acceso
+                if ($a->commission == $commission) { //Se fija si esta la comision
                     $this->accessModel->removeAccess($a->id);
                 }
-            }
+            }*/
+            $this->accessModel->removeAccess($commission,$material);
             header("Location: " . BASE_URL. 'archive/'.$material);
         }
-        else{
+        else{ //Si el usuario no es administrador no puede quitar el acceso a ninguna comision
             $this->error->error("Solo los administradores pueden administrar los accesos al material de estudio.");
         }
     }
@@ -141,11 +142,11 @@ class MaterialController {
     //Otorga acceso a una comisión para ver el material
     public function giveAccess($commission,$material){
         $permitAdmin = AuthHelper::checkPermits(); //Pregunta si el usuario es administrador
-        if ($permitAdmin == 1) {
-            $this->accessModel->addAccess($commission,$material);
-            header("Location: " . BASE_URL. 'archive/'.$material);
+        if ($permitAdmin == 1) {  //Si es administrador da acceso al material a la comision seleccionada
+            $this->accessModel->addAccess($commission,$material); //Agrega el acceso a la DB 
+            header("Location: " . BASE_URL. 'archive/'.$material); //Recarga la pagina
         }
-        else{
+        else{ //Si no es administrador no puede dar acceso a otras comisiones
             $this->error->error("Solo los administradores pueden administrar los accesos al material de estudio.");
         }
     }
